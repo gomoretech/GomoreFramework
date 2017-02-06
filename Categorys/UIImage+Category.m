@@ -112,13 +112,13 @@
     return newImage;
 }
 
-- (UIImage*) resizableImage:(UIEdgeInsets)insets {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0f) {
-        return [self resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    }
-    
-    return [self stretchableImageWithLeftCapWidth:insets.left topCapHeight:insets.top];
-}
+//- (UIImage*) resizableImage:(UIEdgeInsets)insets {
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0f) {
+//        return [self resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+//    }
+//
+//    return [self stretchableImageWithLeftCapWidth:insets.left topCapHeight:insets.top];
+//}
 
 
 + (UIImage *) imageByScalingAndCroppingForSourceImage:(UIImage *)sourceImage targetSize:(CGSize)targetSize {
@@ -328,7 +328,7 @@
 
 - (UIImage *)imageByRotateRight90
 {
-   return [self imageRotatedByDegrees:90];
+    return [self imageRotatedByDegrees:90];
 }
 
 - (UIImage *)imageByRotateLeft90
