@@ -50,24 +50,6 @@
 - (BOOL)isChineseAndLetterAndNumberAndBelowLineNotFirstOrLast;
 - (BOOL)isBelow7ChineseOrBlow14LetterAndNumberAndBelowLine;
 
-#pragma mark - 加密
-// md5
-- (NSString*)md5;
-
-// sha
-- (NSString *)sha1;
-- (NSString *)sha256;
-- (NSString *)sha384;
-- (NSString *)sha512;
-
-// base64
-- (NSString *)base64Encode;
-- (NSString *)base64Decode;
-
-// des
-- (NSString *)encryptWithKey:(NSString *)key;
-- (NSString *)decryptWithKey:(NSString *)key;
-
 #pragma mark - 获得特殊字符串
 + (NSString*)getTimeAndRandomString;
 
