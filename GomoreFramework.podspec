@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/caoyunxiao/GomoreFramework.git", :tag => "1.0.0" }
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
-  s.source_files = "**/*.{h,m}"
+  s.source_files = "Categorys/*.{h,m}"
   s.requires_arc = true
 end
