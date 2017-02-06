@@ -56,15 +56,6 @@
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees;
 
 /**
- *  拉伸图片UIEdgeInsets
- *
- *  @param insets UIEdgeInsets
- *
- *  @return image
- */
-- (UIImage *)resizableImage:(UIEdgeInsets)insets;
-
-/**
  *  拉伸图片CGFloat
  *
  *  @param scale 拉伸比例

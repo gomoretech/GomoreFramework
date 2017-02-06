@@ -112,13 +112,6 @@
     return newImage;
 }
 
-//- (UIImage*) resizableImage:(UIEdgeInsets)insets {
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0f) {
-//        return [self resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-//    }
-//
-//    return [self stretchableImageWithLeftCapWidth:insets.left topCapHeight:insets.top];
-//}
 
 
 + (UIImage *) imageByScalingAndCroppingForSourceImage:(UIImage *)sourceImage targetSize:(CGSize)targetSize {
