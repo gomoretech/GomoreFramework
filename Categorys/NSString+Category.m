@@ -9,7 +9,6 @@
 #import "NSString+Category.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCrypto.h>
-#import "GTMBase64.h"
 
 @implementation NSString (Category)
 #pragma mark - 正则匹配
@@ -283,116 +282,116 @@
     return result;
 }
 
-/**
- *  base64加密
- *
- *  @return 加密后的字符串
- */
-- (NSString *)base64Encode {
-    NSString *base64String = [GTMBase64 encodeBase64String:self];
-    return base64String;
-}
+///**
+// *  base64加密
+// *
+// *  @return 加密后的字符串
+// */
+//- (NSString *)base64Encode {
+//    NSString *base64String = [GTMBase64 encodeBase64String:self];
+//    return base64String;
+//}
+//
+///**
+// *  base64解密
+// *
+// *  @return 解密后的字符串
+// */
+//- (NSString *)base64Decode {
+//    NSString *base64String = [GTMBase64 decodeBase64String:self];
+//    return base64String;
+//}
 
-/**
- *  base64解密
- *
- *  @return 解密后的字符串
- */
-- (NSString *)base64Decode {
-    NSString *base64String = [GTMBase64 decodeBase64String:self];
-    return base64String;
-}
+///**
+// *  DES加密
+// *
+// *  @param key 加密需要的key
+// *
+// *  @return 得到加密后的字符串
+// */
+//- (NSString *)encryptWithKey:(NSString *)key
+//{
+//    return [self encrypt:self encryptOrDecrypt:kCCEncrypt key:key];
+//}
+//
+///**
+// *  DES解密
+// *
+// *  @param key 解密需要的key
+// *
+// *  @return 得到解密后的字符串
+// */
+//- (NSString *)decryptWithKey:(NSString *)key
+//{
+//    return [self encrypt:self encryptOrDecrypt:kCCDecrypt key:key];
+//}
 
-/**
- *  DES加密
- *
- *  @param key 加密需要的key
- *
- *  @return 得到加密后的字符串
- */
-- (NSString *)encryptWithKey:(NSString *)key
-{
-    return [self encrypt:self encryptOrDecrypt:kCCEncrypt key:key];
-}
-
-/**
- *  DES解密
- *
- *  @param key 解密需要的key
- *
- *  @return 得到解密后的字符串
- */
-- (NSString *)decryptWithKey:(NSString *)key
-{
-    return [self encrypt:self encryptOrDecrypt:kCCDecrypt key:key];
-}
-
-/**
- *  加密或解密
- *
- *  @param sText            需要加密或解密的字符串
- *  @param encryptOperation kCCDecrypt 解密 kCCEncrypt 加密
- *  @param key              加密解密需要的key
- *
- *  @return 返回加密或解密之后得到的字符串
- */
-- (NSString *)encrypt:(NSString *)sText encryptOrDecrypt:(CCOperation)encryptOperation key:(NSString *)key
-{
-    const void *vplainText;
-    size_t plainTextBufferSize;
-    
-    if (encryptOperation == kCCDecrypt)
-    {
-        NSData *decryptData = [GTMBase64 decodeData:[sText dataUsingEncoding:NSUTF8StringEncoding]];
-        plainTextBufferSize = [decryptData length];
-        vplainText = [decryptData bytes];
-    }
-    else
-    {
-        NSData* encryptData = [sText dataUsingEncoding:NSUTF8StringEncoding];
-        plainTextBufferSize = [encryptData length];
-        vplainText = (const void *)[encryptData bytes];
-    }
-    
-    CCCryptorStatus ccStatus;
-    uint8_t *bufferPtr = NULL;
-    size_t bufferPtrSize = 0;
-    size_t movedBytes = 0;
-    
-    bufferPtrSize = (plainTextBufferSize + kCCBlockSize3DES) & ~(kCCBlockSize3DES - 1);
-    bufferPtr = malloc( bufferPtrSize * sizeof(uint8_t));
-    memset((void *)bufferPtr, 0x0, bufferPtrSize);
-    
-    NSString *initVec = @"shuai";
-    const void *vkey = (const void *) [key UTF8String];
-    const void *vinitVec = (const void *) [initVec UTF8String];
-    
-    ccStatus = CCCrypt(encryptOperation,
-                       kCCAlgorithm3DES,
-                       kCCOptionPKCS7Padding,
-                       vkey,
-                       kCCKeySize3DES,
-                       vinitVec,
-                       vplainText,
-                       plainTextBufferSize,
-                       (void *)bufferPtr,
-                       bufferPtrSize,
-                       &movedBytes);
-    
-    NSString *result = nil;
-    
-    if (encryptOperation == kCCDecrypt)
-    {
-        result = [[NSString alloc] initWithData:[NSData dataWithBytes:(const void *)bufferPtr length:(NSUInteger)movedBytes] encoding:NSUTF8StringEncoding] ;
-    }
-    else
-    {
-        NSData *data = [NSData dataWithBytes:(const void *)bufferPtr length:(NSUInteger)movedBytes];
-        result = [GTMBase64 stringByEncodingData:data];
-    }
-    
-    return result;
-}
+///**
+// *  加密或解密
+// *
+// *  @param sText            需要加密或解密的字符串
+// *  @param encryptOperation kCCDecrypt 解密 kCCEncrypt 加密
+// *  @param key              加密解密需要的key
+// *
+// *  @return 返回加密或解密之后得到的字符串
+// */
+//- (NSString *)encrypt:(NSString *)sText encryptOrDecrypt:(CCOperation)encryptOperation key:(NSString *)key
+//{
+//    const void *vplainText;
+//    size_t plainTextBufferSize;
+//    
+//    if (encryptOperation == kCCDecrypt)
+//    {
+//        NSData *decryptData = [GTMBase64 decodeData:[sText dataUsingEncoding:NSUTF8StringEncoding]];
+//        plainTextBufferSize = [decryptData length];
+//        vplainText = [decryptData bytes];
+//    }
+//    else
+//    {
+//        NSData* encryptData = [sText dataUsingEncoding:NSUTF8StringEncoding];
+//        plainTextBufferSize = [encryptData length];
+//        vplainText = (const void *)[encryptData bytes];
+//    }
+//    
+//    CCCryptorStatus ccStatus;
+//    uint8_t *bufferPtr = NULL;
+//    size_t bufferPtrSize = 0;
+//    size_t movedBytes = 0;
+//    
+//    bufferPtrSize = (plainTextBufferSize + kCCBlockSize3DES) & ~(kCCBlockSize3DES - 1);
+//    bufferPtr = malloc( bufferPtrSize * sizeof(uint8_t));
+//    memset((void *)bufferPtr, 0x0, bufferPtrSize);
+//    
+//    NSString *initVec = @"shuai";
+//    const void *vkey = (const void *) [key UTF8String];
+//    const void *vinitVec = (const void *) [initVec UTF8String];
+//    
+//    ccStatus = CCCrypt(encryptOperation,
+//                       kCCAlgorithm3DES,
+//                       kCCOptionPKCS7Padding,
+//                       vkey,
+//                       kCCKeySize3DES,
+//                       vinitVec,
+//                       vplainText,
+//                       plainTextBufferSize,
+//                       (void *)bufferPtr,
+//                       bufferPtrSize,
+//                       &movedBytes);
+//    
+//    NSString *result = nil;
+//    
+//    if (encryptOperation == kCCDecrypt)
+//    {
+//        result = [[NSString alloc] initWithData:[NSData dataWithBytes:(const void *)bufferPtr length:(NSUInteger)movedBytes] encoding:NSUTF8StringEncoding] ;
+//    }
+//    else
+//    {
+//        NSData *data = [NSData dataWithBytes:(const void *)bufferPtr length:(NSUInteger)movedBytes];
+//        result = [GTMBase64 stringByEncodingData:data];
+//    }
+//    
+//    return result;
+//}
 
 #pragma mark - 计算字符串尺寸
 /**
