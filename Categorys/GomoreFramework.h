@@ -18,7 +18,6 @@
 #import "UIBarButtonItem+Category.H"
 #import "UIButton+Category.H"
 #import "UIColor+Category.H"
-#import "UIImage+Category.H"
 #import "UIImageView+AnimationView.H"
 #import "UIView+Category.H"
 #import "UIViewController+Category.H"
