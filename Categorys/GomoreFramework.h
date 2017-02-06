@@ -21,7 +21,6 @@
 #import "UIImageView+AnimationView.H"
 #import "UIView+Category.H"
 #import "UIViewController+Category.H"
-#import "UIViewController+DDPopUpViewController.H"
 #import "GomoreHUDProgressView.H"
 #import "CalculateHelper.H"
 #import "XYDownMenuViewController.H"
