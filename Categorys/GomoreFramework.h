@@ -1,14 +1,28 @@
 //
-//  CXHeaderFile.h
-//  CXTools
+//  GomoreFramework.h
+//  GomoreFramework
 //
-//  Created by 曹云霄 on 16/9/22.
-//  Copyright © 2016年 上海勾芒科技信息有限公司. All rights reserved.
+//  Created by 曹云霄 on 2017/1/22.
+//  Copyright © 2017年 曹云霄. All rights reserved.
 //
 
-#ifndef CXHeaderFile_h
-#define CXHeaderFile_h
+#ifndef GomoreFramework_h
+#define GomoreFramework_h
 
+#import "NSDictionary+Category.H"
+#import "NSArray+Category.H"
+#import "NSBundle+Category.H"
+#import "NSDate+Category.H"
+#import "NSObject+Category.H"
+#import "NSString+Category.H"
+#import "UIBarButtonItem+Category.H"
+#import "UIButton+Category.H"
+#import "UIColor+Category.H"
+#import "UIImageView+AnimationView.H"
+#import "UIView+Category.H"
+#import "UIViewController+Category.H"
+#import "CalculateHelper.H"
+#import "XYDownMenuViewController.H"
 
 
 
@@ -68,22 +82,4 @@
  */
 #define Device          [UIDevice currentDevice]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#endif /* CXHeaderFile_h */
+#endif /* GomoreFramework_h */

@@ -7,7 +7,7 @@
 //
 
 #import "XYDownMenuViewController.h"
-#import "CXHeaderFile.h"
+#import "GomoreFramework.h"
 #import "UIView+Category.h"
 
 @interface XYDownMenuViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
